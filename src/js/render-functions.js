@@ -1,7 +1,14 @@
-const gallery = document.querySelector(".gallery");
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
+const gallery = document.querySelector('.gallery');
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 export function createGallery(hits) {
-
   const markup = hits
     .map((img) => `
       <li class="gallery-item">
@@ -17,18 +24,18 @@ export function createGallery(hits) {
         <p><span class="bold-font">Views:</span> ${img.views}</p>
         <p><span class="bold-font">Comments:</span> ${img.comments}</p>
         <p><span class="bold-font">Downloads:</span> ${img.downloads}</p>
-        </div>
-        
+        </div> 
       </li>
-    `)
-        .join("");
+      `)
+    .join("");
     
   gallery.innerHTML = markup;
+  lightbox.refresh();
 }
 
 
 export function clearGallery() {
-    gallery.innerHTML = "";
+  gallery.innerHTML = "";
 }
 
 export function showLoader() {
