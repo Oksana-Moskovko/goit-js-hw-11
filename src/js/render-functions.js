@@ -1,4 +1,3 @@
-// SimpleLightbox
 const gallery = document.querySelector(".gallery");
 
 export function createGallery(hits) {
@@ -29,8 +28,7 @@ export function createGallery(hits) {
 
 
 export function clearGallery() {
-    const galleryItem = document.querySelector(".gallery-item");
-    gallery.removeAttribute(galleryItem);
+    gallery.innerHTML = "";
 }
 
 export function showLoader() {
